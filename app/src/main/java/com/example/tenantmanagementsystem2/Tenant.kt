@@ -1,13 +1,13 @@
 package com.example.tenantmanagementsystem2
 
-// Data class to hold tenant information for the UI[cite: 35]
+import java.io.Serializable
+
 data class Tenant(
     val name: String,
     val phone: String,
     val rent: String
-) {
+) : Serializable {
     fun summary(): String {
-        // Try it yourself #2: Modified summary to show "Rent paid:"
-        return "Tenant: $name\nPhone: $phone\nRent paid: KSh $rent"
+        return "Tenant: $name\nPhone: $phone\nRent: KSh $rent"
     }
 }
