@@ -15,7 +15,7 @@ class LoginActivity: AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Read the email sent from RegisterActivity (if it exists)[cite: 54]
+        // Read the email sent from RegisterActivity (if it exists)
         val registeredEmail = intent.getStringExtra("EMAIL")
         if (registeredEmail != null) {
             binding.emailEditText.setText(registeredEmail)
@@ -30,8 +30,10 @@ class LoginActivity: AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Explicit Intent: Open MainActivity[cite: 49]
+            // Explicit Intent: Open MainActivity
             val intent = Intent(this, MainActivity::class.java)
+            // NEW IN PRACTICAL 3: Pass the email to MainActivity for the drawer header[cite: 47]
+            intent.putExtra("EMAIL", email)
             startActivity(intent)
             finish()
         }
@@ -41,7 +43,7 @@ class LoginActivity: AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Implicit Intent: Open a website[cite: 56]
+        // Implicit Intent: Open a website
         binding.helpTextView.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.strathmore.edu"))
             startActivity(intent)
